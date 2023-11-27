@@ -38,7 +38,9 @@ pipeline {
 
     stage ('Build') {
       steps {
+        dir("my-webapp") {
         sh 'mvn clean package'
+        }
       }
     }
 
@@ -46,9 +48,9 @@ pipeline {
 
     stage('deployment phase') {
         steps {
-            ssh 
+            //ssh 
             // echo $(( ($(date +%s) - $(stat test.txt  -c %Y)) / 60 ))
-
+            echo "Hi There"
         }
 
     }

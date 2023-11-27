@@ -20,7 +20,7 @@ xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      <java.version>1.8</java.version>
+      <java.version>17</java.version>
       <tomcat.version>9.0.37</tomcat.version>
    </properties>
 

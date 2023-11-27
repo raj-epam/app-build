@@ -25,7 +25,7 @@ set +x
 # set -x
 # java -jar target/${NAME}-${VERSION}.jar
 
-cp target/${NAME}-${VERSION}.jar $BUILD_NUMBER.jar
+#cp target/${NAME}-${VERSION}.jar $BUILD_NUMBER.jar
+cp target/${NAME}-${VERSION}.jar sample.jar
+
 echo "File created"
-ssh -o StrictHostKeyChecking=no  dhluser@10.0.0.5 ls /opt/tomcat/webapps
-ls /opt

@@ -29,10 +29,10 @@ set +x
 cp target/${NAME}-${VERSION}.jar sample.jar
 
 echo "File created"
-ssh -i $1 dhluser@10.0.0.5 << ! 
+ssh -i $1 dhluser@10.0.0.5 << EOF 
  sudo ls /opt/tomcat/webapps
  sudo mkdir /opt/tomcat/backup/$(date)
- sudo cp /opt/tomcat/webapps/sample.jar /opt/tomcat/backup/$(date)/sample.jar
+ sudo cp /opt/tomcat/webapps/sample.jar /opt/tomcat/backup/$(date)/
  sudo rm -f /opt/tomcat/webapps/sample.jar
- !
+ EOF
  

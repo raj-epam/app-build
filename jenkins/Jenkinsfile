@@ -29,10 +29,10 @@ pipeline {
             steps {
                 sh 'ls -laR target'
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh './jenkins/scripts/deliver.sh'
+                //sh './jenkins/scripts/deliver.sh'
                 withCredentials([sshUserPrivateKey(credentialsId: "tomcat", keyFileVariable: 'KEYFILE')]) {
                     sh 'ssh -i $KEYFILE dhluser@10.0.0.5 uname -a'
-                    sh '.\scripts\copy.sh'
+                    sh './jenkins/scripts/copy.sh'
                 }
 
                 // sshagent(credentials : ['tomcat']) {

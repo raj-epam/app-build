@@ -24,12 +24,10 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-            steps {
-                sh 'ls -laR | grep -i .jar'
-            }
         }
         stage('Deliver') {
             steps {
+                sh 'ls -laR | grep -i .jar'
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/deliver.sh'
             }

@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'ls -laR target'
+                // sh 'ls -laR target'
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/deliver.sh'
                 withCredentials([sshUserPrivateKey(credentialsId: "tomcat", keyFileVariable: 'KEYFILE')]) {

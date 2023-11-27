@@ -17,21 +17,21 @@ pipeline {
                         {
                             git branch: "main",
                             credentialsId: "raj-epam",
-                            url: 'https://github.com/raj-epam/templates.git'
+                            url: 'https://github.com/raj-epam/app-build.git'
                         }
                     }
                 }
-                stage('CheckoutCode') {
-                    steps {
-                        sh 'mkdir -p deployments'
-                        dir("deployments")
-                        {
-                            git branch: "main",
-                            credentialsId: "raj-epam",
-                            url: 'https://github.com/raj-epam/app-testcase1-deploy.git'
-                        }
-                    }
-                }
+                // stage('CheckoutCode') {
+                //     steps {
+                //         sh 'mkdir -p deployments'
+                //         dir("deployments")
+                //         {
+                //             git branch: "main",
+                //             credentialsId: "raj-epam",
+                //             url: 'https://github.com/raj-epam/app-testcase1-deploy.git'
+                //         }
+                //     }
+                // }
 
             }
         }

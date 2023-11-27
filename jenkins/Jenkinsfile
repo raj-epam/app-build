@@ -31,7 +31,7 @@ pipeline {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/deliver.sh'
 
-                sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+                sshagent(credentials : ['tomcat']) {
                     sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 uptime'
                     sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 ls /opt/tomcat/webapps'
                     sh 'ssh -v dhluser@10.0.0.5'

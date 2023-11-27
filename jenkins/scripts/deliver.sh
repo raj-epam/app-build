@@ -27,5 +27,5 @@ set +x
 
 cp target/${NAME}-${VERSION}.jar $BUILD_NUMBER.jar
 echo "File created"
-ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 ls /opt/tomcat/webapps
+ssh -o StrictHostKeyChecking=no  dhluser@10.0.0.5 ls /opt/tomcat/webapps
 ls /opt

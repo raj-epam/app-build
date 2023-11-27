@@ -30,12 +30,16 @@ pipeline {
                 sh 'ls -laR target'
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/deliver.sh'
+                withCredentials([sshUserPrivateKey(credentialsId: "tomcat", keyFileVariable: 'KEYFILE')]) {
+                    sh 'ssh -i $KEYFILE dhluser@10.0.0.5 uname -a'
+                    sh '.\scripts\copy.sh'
+                }
 
-                sshagent(credentials : ['tomcat']) {
-                    sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 uptime'
-                    sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 ls /opt/tomcat/webapps'
-                    sh 'ssh -v dhluser@10.0.0.5'
-                    //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+                // sshagent(credentials : ['tomcat']) {
+                //     sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 uptime'
+                //     sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 ls /opt/tomcat/webapps'
+                //     sh 'ssh -v dhluser@10.0.0.5'
+                //     //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
         }
     //             def remote = [:]
     // remote.name = 'test'

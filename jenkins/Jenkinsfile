@@ -30,6 +30,23 @@ pipeline {
                 sh 'ls -laR target'
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/deliver.sh'
+
+                sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+                    sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 uptime'
+                    sh 'ssh -o StrictHostKeyChecking=no dhluser@10.0.0.5 ls /opt/tomcat/webapps'
+                    sh 'ssh -v dhluser@10.0.0.5'
+                    //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+        }
+    //             def remote = [:]
+    // remote.name = 'test'
+    // remote.host = 'test.domain.com'
+    // remote.user = 'dhluser'
+    // remote.password = 'password'
+    // remote.allowAnyHosts = true
+    // stage('Remote SSH') {
+    //   writeFile file: 'abc.sh', text: 'ls -lrt'
+    //   sshPut remote: remote, from: 'abc.sh', into: '.'
+    // }
             }
         }
     }
